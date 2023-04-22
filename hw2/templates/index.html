@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Study Space Location Entry</h2>
+
+    <h3>submit <a href="{{ url_for('submit') }}">here</a></h3>
+    <h3>Entries</h3>
+    {% for entry in entries %}
+        <p class=entry>
+            Building name: {{ entry.bname }} &lt;Building code:{{ entry.bcode }}&gt;
+	    <br>Floor: {{ entry.floor }}&lt;Room number:{{ room_num }}&gt;<br>
+	    Rating: {{ entry.rating }}
+        </p>
+    {% endfor %}
+
+{% endblock %}
