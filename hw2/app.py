@@ -13,7 +13,7 @@ app.add_url_rule('/',
                  methods=["GET"])
 
 app.add_url_rule('/submit',
-                 view_func=Sign.as_view('submit'),
+                 view_func=Submit.as_view('submit'),
                  methods=['GET', 'POST'])
 
 if __name__ == '__main__':

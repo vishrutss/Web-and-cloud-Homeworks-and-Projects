@@ -53,7 +53,7 @@ class model(Model):
         params = {'bname':bname, 'bcode':bcode, 'floor':floor, 'room_num':room_num, 'rating':rating}
         connection = sqlite3.connect(DB_FILE)
         cursor = connection.cursor()
-        cursor.execute("insert into guestbook (bname, bcode, floor, room_num, rating) VALUES (:bname, :bcode, :floor, :room_num, :rating)", params)
+        cursor.execute("insert into study_space (bname, bcode, floor, room_num, rating) VALUES (:bname, :bcode, :floor, :room_num, :rating)", params)
 
         connection.commit()
         cursor.close()
