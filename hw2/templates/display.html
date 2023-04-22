@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Study Space Locations</h2>
+
+    <h3>Entries</h3>
+    {% for entry in entries %}
+        <p class=entry>
+            Building name: {{ entry.bname }}
+	    <br>Building code:{{ entry.bcode }}
+	    <br>Floor: {{ entry.floor }}
+	    <br>Room number:{{ entry.room_num }}
+	    <br>Rating: {{ entry.rating }}
+        </p>
+    {% endfor %}
+
+{% endblock %}
+
