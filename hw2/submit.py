@@ -2,7 +2,7 @@ from flask import redirect, request, url_for, render_template
 from flask.views import MethodView
 import gbmodel
 
-class Sign(MethodView):
+class Submit(MethodView):
     def get(self):
         return render_template('submit.html')
 
