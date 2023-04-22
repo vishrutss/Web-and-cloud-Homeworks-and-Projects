@@ -6,8 +6,10 @@
     <h3>Entries</h3>
     {% for entry in entries %}
         <p class=entry>
-            Building name: {{ entry.bname }} &lt;Building code:{{ entry.bcode }}&gt;
-	    <br>Floor: {{ entry.floor }}&lt;Room number:{{ room_num }}&gt;<br>
+            Building name: {{ entry.bname }} &lt;
+	    <br>Building code:{{ entry.bcode }}&lt;<br>
+	    <br>Floor: {{ entry.floor }}&lt;<br>
+	    <br>Room number:{{ entry.room_num }}&lt;<br>
 	    Rating: {{ entry.rating }}
         </p>
     {% endfor %}
