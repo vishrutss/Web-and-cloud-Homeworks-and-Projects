@@ -39,7 +39,7 @@ class model(Model):
         cursor.execute("SELECT * FROM study_space")
         return cursor.fetchall()
 
-    def insert(self, name, email, message):
+    def insert(self, bname, bcode, floor, room_num, rating):
         """
         Inserts entry into database
         :param bname: String
