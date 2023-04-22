@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Submit Study Space Location</h2>
+    <form action="{{ url_for('submit') }}" method=post>
+	<p class="heading">Building Name: <input type=text name=bname></p>
+	<p class="heading">Building Code: <input type=text name=bcode></p>
+        <p class="heading">Floor: <input type=number name=floor></p>
+	<p class="heading">Room Number: <input type=number name=room_num></p>
+	<p class="heading">Rating: <input type=number name=rating></p>
+	<p><input type=submit value=Submit></p>
+    </form>
+{% endblock %}
