@@ -1,0 +1,10 @@
+logs/
+.git
+.cache
+*.md
+*/.class
+env/
+*.pyc
+_pycache_/
+**/.DS_Store
+*.db
