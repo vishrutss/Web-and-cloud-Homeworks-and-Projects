@@ -8,3 +8,6 @@ env/
 _pycache_/
 **/.DS_Store
 *.db
+*/temp*
+*/*/temp*
+temp?
