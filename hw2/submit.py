@@ -1,9 +1,15 @@
+"""
+This is used to fill the entry form
+"""
 from flask import redirect, request, url_for, render_template
 from flask.views import MethodView
 import gbmodel
 
 class Submit(MethodView):
     def get(self):
+        """
+        Redirects to submit.html
+        """
         return render_template('submit.html')
 
     def post(self):
