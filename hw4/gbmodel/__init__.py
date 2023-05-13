@@ -2,7 +2,7 @@ model_backend = 'datastore'
 
 if model_backend == 'sqlite3':
     from .model_sqlite3 import model
-else if model_backend == 'datastore':
+elif model_backend == 'datastore':
     from .model_datastore import model
 else:
     raise ValueError("No appropriate databackend configured. ")
