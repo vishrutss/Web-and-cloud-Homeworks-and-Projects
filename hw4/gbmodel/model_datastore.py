@@ -36,14 +36,14 @@ def from_datastore(entity):
 
 class model(Model):
     def __init__(self):
-        self.client = datastore.Client('cloud-sharma-vishrutb')
+        self.client = datastore.Client('cloud-sharma-vishrut')
 
     def select(self):
         query = self.client.query(kind = 'Review')
         entities = list(map(from_datastore,query.fetch()))
         return entities
 
-    def insert(self,name,email,message):
+    def insert(self,bname,bcode,floor,room_num,rating):
         key = self.client.key('Review')
         rev = datastore.Entity(key)
         rev.update( {
