@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h2>Movie Synopsis Viewer</h2>
+    <h2>Movie Trailer Viewer</h2>
 
-    <h3>display favourites <a href="{{ url_for('display') }}">here</a></h3>
+    <h3>display favourites <a href="{{ url_for('favourites') }}">here</a></h3>
 
     <h2>Movie Details</h2>
     <ul>
         {% for movie in movies %}
-        <li>{{ movie.title }}</li>
+        <li><a href="{{ url_for('display', movie_id=movie.id) }}">{{ movie.title }}</a></li>
         {% endfor %}
     </ul>
 

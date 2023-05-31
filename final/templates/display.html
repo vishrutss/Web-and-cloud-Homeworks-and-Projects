@@ -1,17 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h2>Study Space Locations</h2>
+    <title>Movie Details</title>
 
-    <h3>Entries</h3>
-    {% for entry in entries %}
-        <p class=entry>
-            Building name: {{ entry.bname }}
-	    <br>Building code:{{ entry.bcode }}
-	    <br>Floor: {{ entry.floor }}
-	    <br>Room number:{{ entry.room_num }}
-	    <br>Rating: {{ entry.rating }}
-        </p>
-    {% endfor %}
+    <h2>{{ movie.title }}</h2>
+    <div id="trailer">
+	 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{trailer_id }}" frameborder="0" allowfullscreen></iframe>
+    </div>
     <h3><a href="{{ url_for('index') }}">Back</a></h3>
 
 {% endblock %}
