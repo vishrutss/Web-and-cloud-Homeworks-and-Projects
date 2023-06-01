@@ -2,6 +2,8 @@ import flask
 from flask.views import MethodView
 from index import Index
 from display import Display
+from favourites import Favourites
+from submit import Submit
 
 
 app = flask.Flask(__name__)
@@ -11,8 +13,12 @@ app.add_url_rule('/',
                  methods=["GET"])
 
 app.add_url_rule('/favourites',
-                 view_func=Display.as_view('favourites'),
+                 view_func=Favourites.as_view('favourites'),
                  methods=["GET"])
+
+app.add_url_rule('/submit',
+                 view_func=Submit.as_view('submit'),
+                 methods=['POST'])
 
 app.add_url_rule('/display/<int:movie_id>',
                  view_func=Display.as_view('display'),

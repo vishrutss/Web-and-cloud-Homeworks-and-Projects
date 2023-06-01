@@ -1,3 +1,9 @@
+wheel
 flask
 requests
 google-api-python-client
+google-cloud-datastore
+google-cloud-firestore
+gunicorn
+rsa
+

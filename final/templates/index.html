@@ -12,8 +12,29 @@
     <h2>Movie Details</h2>
     <ul>
         {% for movie in movies %}
-        <li><a href="{{ url_for('display', movie_id=movie.id) }}">{{ movie.title }}</a></li>
+        <li>
+		<a href="{{ url_for('display', movie_id=movie.id) }}">{{ movie.title }}</a>
+		<button onclick="addToFavorites('{{ movie.id }}', '{{ movie.title }}', '{{ movie.overview }}', '{{ movie.original_language }}')">Add to Favorites</button>
+	</li>
         {% endfor %}
     </ul>
-
+    <script>
+  	function addToFavorites(movieId, movieTitle, movieOverview, movieLanguage) {
+    		var xhr = new XMLHttpRequest();
+    		xhr.open("POST", "/submit", true);
+    		xhr.setRequestHeader("Content-Type", "application/json");
+    		xhr.onreadystatechange = function() {
+      			if (xhr.readyState === 4 && xhr.status === 200) {
+        			alert("Movie added to favorites");
+      			}
+    		};
+    		var data = JSON.stringify({
+      			movie_id: movieId,
+      			title: movieTitle,
+      			overview: movieOverview,
+      			language: movieLanguage
+    		});
+    		xhr.send(data);
+  	}
+    </script>
 {% endblock %}

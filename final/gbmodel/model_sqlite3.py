@@ -23,9 +23,9 @@ class model(Model):
         connection = sqlite3.connect(DB_FILE)
         cursor = connection.cursor()
         try:
-            cursor.execute("select count(bcode) from study_space")
+            cursor.execute("select count(movie_id) from movies")
         except sqlite3.OperationalError:
-            cursor.execute("create table study_space (bname text, bcode text, floor integer, room_num integer, rating real)")
+            cursor.execute("create table movies (movie_id text, title text, overview text, language text)")
         cursor.close()
 
     def select(self):
@@ -36,10 +36,10 @@ class model(Model):
         """
         connection = sqlite3.connect(DB_FILE)
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM study_space")
+        cursor.execute("SELECT * FROM movies")
         return cursor.fetchall()
 
-    def insert(self, bname, bcode, floor, room_num, rating):
+    def insert(self, movie_id, title, overview, language):
         """
         Inserts entry into database
         :param bname: String
@@ -50,11 +50,12 @@ class model(Model):
         :return: True
         :raises: Database errors on connection and insertion
         """
-        params = {'bname':bname, 'bcode':bcode, 'floor':floor, 'room_num':room_num, 'rating':rating}
+        params = {'movie_id':movie_id, 'title':title, 'overview':overview, 'language':language}
         connection = sqlite3.connect(DB_FILE)
         cursor = connection.cursor()
-        cursor.execute("insert into study_space (bname, bcode, floor, room_num, rating) VALUES (:bname, :bcode, :floor, :room_num, :rating)", params)
+        cursor.execute("insert into movies (movie_id, title, overview, language) VALUES (:movie_id, :title, :overview, :language)", params)
 
         connection.commit()
         cursor.close()
         return True
+

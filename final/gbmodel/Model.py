@@ -6,14 +6,13 @@ class Model():
         """
         pass
 
-    def insert(self, bname, bcode, floor, room_num, rating):
+    def insert(self, movie_id, title, overview, language):
         """
         Inserts entry into database
-        :param bname: String
-        :param bcode: String
-        :param floor: Integer
-	:param room_num: Integer
-	:param rating: Float
+        :param movie_id: String
+        :param title: String
+        :param overview: String
+	:param language: String
         :return: none
         :raises: Database errors on connection and insertion
         """
