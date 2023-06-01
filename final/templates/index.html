@@ -4,6 +4,11 @@
 
     <h3>display favourites <a href="{{ url_for('favourites') }}">here</a></h3>
 
+    <form action="{{ url_for('index') }}" method="GET">
+  	<input type="text" name="query" placeholder="Search for movies">
+  	<button type="submit">Search</button>
+    </form>
+
     <h2>Movie Details</h2>
     <ul>
         {% for movie in movies %}

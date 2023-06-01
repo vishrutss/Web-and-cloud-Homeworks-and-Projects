@@ -5,7 +5,6 @@ from flask import render_template
 from flask.views import MethodView
 import gbmodel
 import requests
-import openai
 import os
 from googleapiclient.discovery import build
 

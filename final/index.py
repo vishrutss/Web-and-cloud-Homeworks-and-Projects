@@ -1,7 +1,7 @@
 """
 This opens index.html
 """
-from flask import render_template
+from flask import render_template, request
 from flask.views import MethodView
 import gbmodel
 import os
@@ -14,7 +14,11 @@ class Index(MethodView):
         """
         model = gbmodel.get_model()
         tmdb_api_key = os.environ['TMDB_API_KEY']
-        url = f'https://api.themoviedb.org/3/discover/movie?api_key={tmdb_api_key}&sort_by=popularity.desc'
+        query = request.args.get('query')
+        if query:
+            url = f'https://api.themoviedb.org/3/search/movie?api_key={tmdb_api_key}&query={query}'
+        else:
+            url = f'https://api.themoviedb.org/3/discover/movie?api_key={tmdb_api_key}&sort_by=popularity.desc'
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
