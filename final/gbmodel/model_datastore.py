@@ -39,12 +39,12 @@ class model(Model):
         self.client = datastore.Client('cloud-sharma-vishrut')
 
     def select(self):
-        query = self.client.query(kind = 'View')
+        query = self.client.query(kind = 'Movies')
         entities = list(map(from_datastore,query.fetch()))
         return entities
 
     def insert(self,movie_id,title,overview,language):
-        key = self.client.key('View')
+        key = self.client.key('Movies')
         rev = datastore.Entity(key)
         rev.update( {
             'movie_id': movie_id,
