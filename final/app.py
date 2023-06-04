@@ -14,7 +14,7 @@ app.add_url_rule('/',
 
 app.add_url_rule('/favourites',
                  view_func=Favourites.as_view('favourites'),
-                 methods=["GET"])
+                 methods=["GET", "POST"])
 
 app.add_url_rule('/submit',
                  view_func=Submit.as_view('submit'),

@@ -18,5 +18,8 @@ class Submit(MethodView):
         language = data.get('language')
         
         model = gbmodel.get_model()
-        model.insert(movie_id, title, overview, language)
+        entries = [dict(movie_id=row[0], title=row[1], overview=row[2], language=row[3]) for row in model.select()]
+        
+        if not any(entry['movie_id'] == movie_id for entry in entries):
+            model.insert(movie_id, title, overview, language)
         return redirect(url_for('index'))

@@ -17,3 +17,12 @@ class Model():
         :raises: Database errors on connection and insertion
         """
         pass
+
+    def delete(self, movie_id):
+        """
+        Deletes an entry from the database based on the movie_id
+        :param movie_id: String
+        :return: True if the deletion is successful, False otherwise
+        :raises: Database errors on connection and deletion
+        """
+        pass

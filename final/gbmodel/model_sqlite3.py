@@ -59,3 +59,17 @@ class model(Model):
         cursor.close()
         return True
 
+    def delete(self, movie_id):
+        """
+        Deletes an entry from the database
+        :param movie_id: String
+        :return: True
+        :raises: Database errors on connection and deletion
+        """
+        connection = sqlite3.connect(DB_FILE)
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM movies WHERE movie_id = ?", (movie_id,))
+        connection.commit()
+        cursor.close()
+        return True
+

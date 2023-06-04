@@ -55,3 +55,8 @@ class model(Model):
         self.client.put(rev)
         return True
 
+    def delete(self, movie_id):
+        key = self.client.key('Movies', movie_id)
+        self.client.delete(key)
+        return True
+
