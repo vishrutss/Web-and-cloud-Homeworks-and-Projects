@@ -56,7 +56,8 @@ class model(Model):
         return True
 
     def delete(self, movie_id):
-        key = self.client.key('Movies', movie_id)
-        self.client.delete(key)
-        return True
+        query = self.client.query(kind='Movies')
+        for entity in query.fetch():
+            if entity['movie_id'] == movie_id:
+                self.client.delete(entity.key)
 
