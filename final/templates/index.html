@@ -15,6 +15,7 @@
         <li>
 		<a href="{{ url_for('display', movie_id=movie.id) }}">{{ movie.title }}</a>
 		<button onclick="addToFavorites('{{ movie.id }}', '{{ movie.title }}', '{{ movie.overview }}', '{{ movie.original_language }}')">Add to Favorites</button>
+		<br><img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="Movie poster image" class="poster-image"><br>
 	</li>
         {% endfor %}
     </ul>
