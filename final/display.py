@@ -11,6 +11,11 @@ from googleapiclient.discovery import build
 
 class Display(MethodView):
     def fetch_movie_title(self, movie_id):
+        """
+        Fetches the movie title from the TMDB API
+        :param movie_id: String
+        :return: movie_title if movie_id is valid, None otherwise
+        """
         tmdb_api_key = os.environ['TMDB_API_KEY']
         url = f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={tmdb_api_key}'
         response = requests.get(url)
@@ -24,6 +29,11 @@ class Display(MethodView):
             return None
     
     def get_trailer(self, movie_title):
+        """
+        Fetches the id of the trailer from the YouTube API
+        :param movie_title: String
+        :return: trailer's YouTube video id
+        """
         youtube_api_key = os.environ['YOUTUBE_API_KEY']
         youtube = build('youtube', 'v3', developerKey=youtube_api_key)
         search_response = youtube.search().list(
@@ -37,7 +47,11 @@ class Display(MethodView):
         return trailer_id
 
     def get(self, movie_id):
-        # Fetch movie details for the provided movie ID
+        """
+        Fetches movie title and trailer id from fetch_movie_title(), and get_trailer() functions respectively
+        and redirects to display.html
+        :param movie_id: String
+        """
         movie_title = self.fetch_movie_title(movie_id)
         trailer_id = self.get_trailer(movie_title)
         return render_template('display.html', movie=movie_title, trailer_id=trailer_id)

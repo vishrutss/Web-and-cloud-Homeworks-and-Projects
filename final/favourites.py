@@ -8,7 +8,7 @@ import gbmodel
 class Favourites(MethodView):
     def get(self):
         """
-        Displays the entries from the db file
+        Displays the entries from the database
         """
         model = gbmodel.get_model()
         entries = [dict(movie_id=row[0], title=row[1], overview=row[2], language=row[3] ) for row in model.select()]
@@ -16,7 +16,7 @@ class Favourites(MethodView):
 
     def post(self):
         """
-        Deletes a movie from favourites
+        Deletes a movie from the database
         """
         movie_id = request.form.get('movie_id')
         model = gbmodel.get_model()

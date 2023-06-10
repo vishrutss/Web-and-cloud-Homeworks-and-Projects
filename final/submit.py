@@ -9,6 +9,7 @@ class Submit(MethodView):
     def post(self):
         """
         Accepts POST requests, and processes the request;
+        Adds selected entry into the database
         Redirect to index when completed.
         """
         data = request.get_json()

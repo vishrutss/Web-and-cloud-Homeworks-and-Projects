@@ -1,16 +1,16 @@
 """
-A simple study space entry flask app.
+A simple movie trailer viewer flask app.
 Data is stored in a SQLite database that looks something like the following:
 
-+------------+------------------+------------+----------------+-------+
-| Building Name        | Building Code | floor  | room number | rating|
-+============+==================+============+----------------+-------+
-| Engineering Building | FAB           | 5      | 512         | 4.2   |
-+------------+------------------+------------+----------------+-------+
++------------+------------------+------------+----------------+
+| Movie ID   | Movie Title      | Overview         | Language |
++============+==================+============+----------------+
+| 1          | John Wick        | *Movie synopsis* | en       |
++------------+------------------+------------+----------------+
 
 This can be created with the following SQL (see bottom of this file):
 
-    create table study_space (bname text, bcode text, floor integer, room_num integer, rating real);
+    create table movies (movie_id text, title text, overview text, language text);
 
 """
 from .Model import Model
@@ -31,7 +31,7 @@ class model(Model):
     def select(self):
         """
         Gets all rows from the database
-        Each row contains: bname, bcode, floor, room_num, rating
+        Each row contains: movie_id, title, overview, language
         :return: List of lists containing all rows of database
         """
         connection = sqlite3.connect(DB_FILE)
@@ -42,11 +42,10 @@ class model(Model):
     def insert(self, movie_id, title, overview, language):
         """
         Inserts entry into database
-        :param bname: String
-        :param bcode: String
-        :param floor: Integer
-        :param room_num: Integer
-        :param rating: Float
+        :param movie_id: String
+        :param title: String
+        :param overview: String
+        :param language: String
         :return: True
         :raises: Database errors on connection and insertion
         """
