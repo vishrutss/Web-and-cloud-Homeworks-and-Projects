@@ -46,6 +46,25 @@ class Display(MethodView):
         trailer_id = search_response['items'][0]['id']['videoId']
         return trailer_id
 
+    def get_likes_and_views(self, trailer_id):
+        """
+        Fetches the number of likes and views for the YouTube video
+        :param trailer_id: String
+        :return: Dictionary containing likes and views
+        """
+        youtube_api_key = os.environ['YOUTUBE_API_KEY']
+        youtube = build('youtube', 'v3', developerKey=youtube_api_key)
+        video_response = youtube.videos().list(
+            part='statistics',
+            id=trailer_id
+        ).execute()
+
+        statistics = video_response['items'][0]['statistics']
+        likes = int(statistics['likeCount'])
+        views = int(statistics['viewCount'])
+
+        return {'likes': likes, 'views': views}
+
     def get(self, movie_id):
         """
         Fetches movie title and trailer id from fetch_movie_title(), and get_trailer() functions respectively
@@ -54,7 +73,8 @@ class Display(MethodView):
         """
         movie_title = self.fetch_movie_title(movie_id)
         trailer_id = self.get_trailer(movie_title)
-        return render_template('display.html', movie=movie_title, trailer_id=trailer_id)
+        likes_and_views = self.get_likes_and_views(trailer_id)
+        return render_template('display.html', movie=movie_title, trailer_id=trailer_id, likes_and_views=likes_and_views)
     
 
 

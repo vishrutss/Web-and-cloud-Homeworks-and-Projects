@@ -6,6 +6,10 @@
     <div id="trailer">
 	 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{trailer_id }}" frameborder="0" allowfullscreen></iframe>
     </div>
+    <div>
+        <h3>Views: {{ likes_and_views.views }}</h3>
+        <h3>Likes: {{ likes_and_views.likes }}</h3>
+    </div>
     <h3><a href="{{ url_for('index') }}">Back</a></h3>
 
 {% endblock %}
