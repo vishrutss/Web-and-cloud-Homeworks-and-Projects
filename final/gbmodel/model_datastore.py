@@ -36,14 +36,34 @@ def from_datastore(entity):
 
 class model(Model):
     def __init__(self):
+        """
+        Initializes the model object.
+        It creates a connection to the Datastore client.
+        Args: None
+        Returns: None
+        """
         self.client = datastore.Client('cloud-sharma-vishrut')
 
     def select(self):
+        """
+        Retrieves all entities of kind 'Movies' from the Datastore.
+        Args: None
+        Returns: entities (list): A list of dictionaries representing the entities.
+        """
         query = self.client.query(kind = 'Movies')
         entities = list(map(from_datastore,query.fetch()))
         return entities
 
     def insert(self,movie_id,title,overview,language):
+        """
+        Inserts a new entity with the given details into the Datastore.
+        Args:
+            movie_id (str): The ID of the movie.
+            title (str): The title of the movie.
+            overview (str): The overview of the movie.
+            language (str): The language of the movie.
+        Returns: bool: True if the entity is successfully inserted, False otherwise.
+        """
         key = self.client.key('Movies')
         rev = datastore.Entity(key)
         rev.update( {
@@ -56,6 +76,11 @@ class model(Model):
         return True
 
     def delete(self, movie_id):
+        """
+        Deletes an entity with the given movie_id from the Datastore.
+        Args: movie_id (str): The ID of the movie to be deleted.
+        Returns: bool: True if the entity is successfully deleted, False otherwise.
+        """
         query = self.client.query(kind='Movies')
         for entity in query.fetch():
             if entity['movie_id'] == movie_id:
